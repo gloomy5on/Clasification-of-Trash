@@ -65,8 +65,34 @@
     </div>
 
     <section class="#classification" id="classification">
-        <h1>Cari Tau<span> Sampahnya!</span></h1>
-        <p>Tinggal taruh fotonya keluar hasilnya!</p>
+        <div class="text-center">
+            <h1>Cari Tau<span> Sampahnya!</span></h1>
+            <p>Tinggal taruh fotonya keluar hasilnya!</p>
+        </div>
+
+        <!-- File Upload Form -->
+        <div class="card shadow p-4 mt-4">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="file" class="form-label">Pilih Sampahnya!:</label>
+                    <input type="file" class="form-control" id="file" name="file" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload and Detect</button>
+            </form>
+        </div>
+
+        {% if result %}
+        <!-- Display Results -->
+        <div id="results" class="mt-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title text-success">{{ result }}</h4>
+                    <p class="card-text text-muted">Confidence: {{ confidence }}%</p>
+                    <img src="{{ file_path }}" class="img-fluid rounded" alt="Uploaded Image">
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
     </section>
 
